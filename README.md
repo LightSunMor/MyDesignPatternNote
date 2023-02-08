@@ -44,9 +44,6 @@
 
 💯 <span style="color:pink">合并总结设计模式</span>
 
-![image-20230113222621409](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230113222621409.png)
-
-
 
 **⭕作用**：
 
@@ -235,8 +232,6 @@
 ☕特点：将子类对象的**实例化功能抽象**成抽象方法，推迟到子类实现 
 
 ☕类和对象的关系 配合UML类图：
-
-![image-20230116165542925](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230116165542925.png)
 
 ​					BJOrderPizza LDOrderPizza 是工厂子类（new）  OrderPizza 是工厂父类
 
@@ -524,8 +519,6 @@ $传统创建对象：$
 
 实现二：
 
-![模板方法中的写法](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230127184525155.png)
-
 🕳在上图的两个钩子方法中，父类虽然将其调用进入流程，但是它是空实现。子类可以选择重写它，然后增加业务代码或者逻辑
 
 
@@ -686,8 +679,6 @@ public Object intercept(Object arg0, Method method, Object[ ] args , MethodProxy
 * springmvc请求的流程图中，执行了拦截器相关方法`interceptor.preHandler`等等在处理SpringMvc请求时，使用到**职责链模式**还使用到**适配器模式**
 * `HandlerExecutionChain`主要**负责的是请求拦截器的执行和请求处理**,但是他**本身不处理请求**，只是**将请求分配给链上注册处理器处理**，这是职责链实现方式,减少职责链本身与处理逻辑之间的耦合,规范了处理流程
 * `HandlerExecutionChain`维护了`HandlerInterceptor`的集合，可以向其中注册相应的拦截器.**增删拦截比较方便，这是相对于类图多出来的管理职责器链的部分**
-* ![image-20230206143654452](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230206143654452.png)
-
 
 
 ## 适配器模式
@@ -764,9 +755,6 @@ UML类图
 
 ① HandlerAdapter中的某一个处理Controller子类 ：`SimpleControllerHandlerAdapter`
 
-![image-20230120122142075](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120122142075.png)
-
-![image-20230120123234488](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120123234488.png)
 
 刚好这种处理器处理的是controller，controller接口自己调用自己子类的handleRequestxxx（）方法返回的就是ModelAndView。然后在这些具体的Controller子类中，又利用反射代理等高级方法去触发你写的controller 方法，然后封装ModelAndView返回
 
@@ -774,18 +762,12 @@ UML类图
 
 ②  HandlerAdapter中的另一种子类：
 
-![image-20230120124532718](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120124532718.png)
-
 这种目前只有一个类实现了：`RequestMappingHandlerAdapter`，这样设计估计是为了方便以后扩展
-
-![image-20230120125137131](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120125137131.png)
-
 
 
 ==动手模拟核心适配器模式的使用流程源码==
 
 1. UML类图：
-   ![image-20230119232853745](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230119232853745.png)
 2. 在DispatchServlet中拥有HandlerAdapter 的所有实现类的对象，用于后续遍历判断为controller寻找对应的handler
 
 
@@ -803,8 +785,6 @@ UML类图
 
 ​	$项目需求$
 
-![image-20230131164321002](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230131164321002.png)
-
 ☕内容：类的依赖关系，类似**发布订阅模式** 。定义对象间的一种 **一对多**的依赖关系，使得每当 “一”对应的对象状态改变时，就可以通知其依赖的对象集群 获取变化的状态
 
 ☕作用：使用数据结构管理主题使用者（依赖者），实现一对多的依赖方式
@@ -814,8 +794,6 @@ UML类图
 ☕场景：天气预报和各大APP应用互通；
 
 ☕类和对象的关系 配合UML类图： 
-
-![image-20230131170728875](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230131170728875.png)
 
 ​		$在观察者的子类中还有一些显示信息的方法，类图中没有写出$
 
@@ -850,7 +828,6 @@ UML类图
 
 ☕类和对象的关系 配合UML类图： 
 
-​		![image-20230124141819625](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230124141819625.png)
 
 最初是Client直接依赖三个子系统，并进行使用，现在只是外观类进行中转了一下（整理使用）；如果更难一点的就是各个<u>子系统之间叶可能相互依赖</u>，导致系统调用复杂度急剧上升 （*这个例子还不太难*）
 
@@ -868,8 +845,6 @@ UML类图
 #### Mybatis
 
 ​	① Configuration中**`MetaObject`**对象使用到外观模式
-
-![image-20230124145315203](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230124145315203.png)
 
 ```java
  protected ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
@@ -898,8 +873,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ​	如何引出桥接模式？
 
-![image-20230121181857138](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230121181857138.png)
-
 因为不同的样式的手机有不同品牌，所以如果按照上图来设计类，非常容易造成类爆炸问题，而且违反了**SRP原则**， 而且维护代码困难 
 
 ☕内容： 将 **抽象**和**实现**解耦，使得两者可以独立地变化。基于 **类的最小设计原则** ，使用继承，聚合，实现让不同的类实现不同的责任。  **该设计模式需要正确地识别出系统中==两个独立变化的维度==，该模式替代继承方案，可以减少子类的个数** 
@@ -916,13 +889,9 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 🍐案例手机UML类图
 
- ![image-20230121185132926](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230121185132926.png)
-
 ​				==Phone充当桥的作用，子类使用品牌的方法，拿到Phone中聚合的Brand进行调用==，将原先直接依赖样式的品牌拆分出来中间加上Phone这个缓冲层，处理两者之间的关系
 
 该设计模式的抽象类图
-
-![image-20230121183622178](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230121183622178.png)
 
 ​	👨‍🎓 $感觉和装饰器模式以及适配器都有点相似$
 
@@ -942,8 +911,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 ① **JDBC** 
 
 ​		jdbc中Driver接口，如果从桥接模式来看，Driver就是一个接口，下面可以有MYSQL的Driver,Oracle的Driver，就是实现接口类
-
-![image-20230121205345494](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230121205345494.png)
 
 
 
@@ -967,9 +934,7 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ☕类和对象的关系 配合UML类图：
 
- 		![image-20230122160157249](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230122160157249.png)
 
-![image-20230122215546274](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230122215546274.png)  
 
 🍎优点：
 
@@ -989,11 +954,9 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ① **HashMap**
 
-​		![image-20230122122247856](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230122122247856.png)
 
 源码设计：Node是HashMap的一个静态内部类，只负责存储数据（只有getset方法）
 
-![image-20230122123106967](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230122123106967.png)
 
 分析：
 
@@ -1004,7 +967,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ## **装饰器**模式
 
-![image-20230129124631968](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230129124631968.png)
 
 ☕内容：通过关联关系，对原有的类对象功能进行扩展。**动态的地给一个对象添加一些额外的功能** 就增加功能的用点来说：装饰器模式比继承更加灵活。**装饰器类实现了原始对象的接口，同时也聚合了一个原始对象进来，对其进行装饰（增加功能）**
 
@@ -1024,11 +986,9 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ​			🍕例子类图
 
-![image-20230120192323361](C:\Users\86176\AppData\Roaming\Typora\typora-user-images\image-20230120192323361.png)
 
 🍐按照这个类图，举一个具体的例子
 
-![image-20230120193012982](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120193012982.png)
 
 
 
@@ -1047,7 +1007,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ① IO流的使用。比如一个`BufferInputStream` 创建时需要传入一个对象，是`InputStream`的对象。这就是在`InputStream`对象上增加功能（**缓存**），这种方式通过关联关系扩展了`InputStream`对象的功能 
 
-![FilterInputStream装饰模式例子](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230120195534118.png)
 
 
 
@@ -1055,7 +1014,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 阿里巴巴开发手册提及到
 
-![image-20230204161201365](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230204161201365.png)
 
 —-🍕  同一个对象在不同环境下做同一件事的时候，可能会有不同的结果。这种一般就会用到`ifelse`，但为了避免屎山代码，使用状态模式来达到相同作用—–**将环境（条件）和表现抽象出来结合对应在一起，传输给对象时，对象可以根据环境选择对应的表现完成工作** <!--将ifelse使用多个子类重写方法的做法来代替-->
 
@@ -1063,7 +1021,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ​	🍐案例 抽奖活动 （箭头是操作方法，黄方块是状态）
 
-![image-20230204164240165](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230204164240165.png)
 
 ☕内容： 允许一个对象在其内部状态改变时改变他的行为，对象看起来似乎修改了他的类 。对于对象来说，状态和行为是一一对应的
 
@@ -1075,13 +1032,11 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ​		<u>原理类图</u>
 
-![image-20230204161906458](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230204161906458.png)
 
 ​	 	-–🍕  Context中拥有ConcreteStateA等多种状态，直接包含多种状态情况的发生，；ConcreteStateA中也有Context，用来改变状态或者获取对象的某些变量值，**两者是一种关联关系** <!--当然这种关系也不是一定存在，不同人实现不一样-->
 
 🍐案例UML类图
 
-![image-20230204165518721](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230204165518721.png)
 
 🍎优点：
 
@@ -1096,7 +1051,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ## 访问者模式
 
-![image-20230129130531923](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230129130531923.png)
 
 ​	工作解析：
 
@@ -1118,7 +1072,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ☕类和对象的关系 配合UML类图： <!--代码写法 使用到了反向调用；又即双分派写法-->
 
-![image-20230129130320134](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230129130320134.png)
 
 ​		目的和装饰者相似，做法不同，装饰者使用了*继承加聚合*。 
 
@@ -1156,11 +1109,8 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ## 中介者模式
 
-由图一变成图二（**网状结构转为星型结构**）
+（**网状结构转为星型结构**）
 
-![图一](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230201161328633.png)
-
-![图二](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230201161355810.png)
 
 ​	中间的服务接待员就是**中介者**的角色
 
@@ -1174,13 +1124,11 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ☕类和对象的关系 配合UML类图： 
 
-**![image-20230201161632629](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230201161632629.png)**
 
 ​				在参与者中调用中介者的方法，将自己加入到中介者的集合中管理。中介者负责管理参与者和协调各个参与者的动作；<u>参与者可能上层也有一个接口或者抽象类</u>
 
 🍐案例智能家具工作UML类图 <!--有些许改动-->
 
-![image-20230201172728401](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230201172728401.png)
 
 🍎优点：
 
@@ -1199,7 +1147,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 🍐案例引入：
 
-![image-20230128161047344](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230128161047344.png)
 
 ​	<!--和外观模式有些相似-->
 
@@ -1219,7 +1166,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ☕类和对象的关系 配合UML类图：
 
-![image-20230128162244916](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230128162244916.png)
 
 **类图解析**：
 
@@ -1228,7 +1174,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 * Receiver：接受者角色，知道如何实施和执行一个请求相关的操作
 * ConcreteCommand :将一个接收者对象receiver与一个动作execute绑定，调用接收者相应的动作实现 execute方法
 
-![案例UML](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230128170014451.png)
 
 
 
@@ -1249,13 +1194,11 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 **①JdbcTemplate**
 
-![image-20230128172724795](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230128172724795.png)
 
 `JdbcTemplate`： 命令调用者
 
 ​	🍐执行了execute方法
 
-![image-20230128173403374](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230128173403374.png)
 
 在execute方法中（是重载方法），调用命令接口实现类的方法 `doInstatement` 
 
@@ -1278,7 +1221,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 
 ☕类和对象的关系 配合UML类图： 
 
-​	![image-20230202165752180](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230202165752180.png)
 
 角色：
 
@@ -1307,10 +1249,6 @@ public static MetaObject forObject(Object object, ObjectFactory objectFactory, O
 5. ==传统无法克隆的情况==：如果原始对象的属性是私有的且没有提供获取方法。而且有可能传给我们看的时候，引用类型是接口或者父类的类型，我们无法知道具体的对象类型
 
 
-
-![image-20230117165403236](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230117165403236.png)
-
-![image-20230117181052099](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230117181052099.png)
 
 
 
@@ -1416,9 +1354,6 @@ protected Object clone(){
 
 如何测试？
 
-1. ![image-20230117171000403](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230117171000403.png)
-2. ![image-20230117171052261](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230117171052261.png)
-3. 
 
 ##  享元模式（蝇量模式）
 
@@ -1434,7 +1369,6 @@ protected Object clone(){
 
 ☕类和对象的关系 配合UML类图：
 
-![image-20230125155308162](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230125155308162.png)
 
 ​		**对象解析**：
 
@@ -1451,7 +1385,6 @@ protected Object clone(){
 
 ​		🍐例子UML类图
 
-![image-20230125161822556](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230125161822556.png)
 
 
 
@@ -1527,7 +1460,6 @@ static {
 
 🍐案例引入：
 
-![image-20230203152134149](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230203152134149.png)
 
 $不包含乘除，不包含括号$
 
@@ -1539,7 +1471,6 @@ $不包含乘除，不包含括号$
 
 ☕类和对象的关系 配合UML类图： 
 
-![image-20230203153622337](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230203153622337.png)
 
 角色说明：
 
@@ -1551,7 +1482,6 @@ $不包含乘除，不包含括号$
 
 🍐案例UML类图
 
-​		![image-20230203161435845](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230203161435845.png)
 
 ​			将值存入hashmap，然后分析表达式expstr，遇到值就去hashmap中取，遇到符号就利用对应解释器解释
 
@@ -1568,8 +1498,6 @@ $不包含乘除，不包含括号$
 #### Spring
 
 ① SpelExp
-
-![image-20230203162714531](D:\大学专业资料\上课笔记\设计模式学习\image\image-20230203162714531.png)
 
 
 
