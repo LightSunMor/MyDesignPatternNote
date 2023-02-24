@@ -9,6 +9,7 @@ import java.util.Random;
  * @message: 可以抽奖状态
  * @author: morSun
  */
+// 定义操作，切换状态
 public class CanRaffleState extends State{
 
     public CanRaffleState(Activity activity) {

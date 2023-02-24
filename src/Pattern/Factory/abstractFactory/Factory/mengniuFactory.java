@@ -13,6 +13,7 @@ import Pattern.Factory.abstractFactory.Milk.mengNiuMilk;
  * @author: morSun
  */
 public class mengniuFactory implements Factory{
+    // 组合了mengNiuFactory
     @Override
     public Milk createMilk() {
         return new mengNiuMilk();

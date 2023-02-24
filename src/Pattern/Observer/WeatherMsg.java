@@ -14,7 +14,7 @@ public class WeatherMsg implements Subject{
 
     private String temperature;// 温度
     private String humidity;// 湿度
-    private List<Observer> observerList;
+    private List<Observer> observerList; //订阅者列表
 
    public WeatherMsg()
    {

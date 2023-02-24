@@ -11,6 +11,7 @@ import java.util.List;
  * @message: 活动
  * @author: morSun
  */
+//管理状态，执行操作
 public class Activity {
     int countPrize=0;
     int integral=0;
@@ -20,6 +21,7 @@ public class Activity {
 
     public Activity() {
         stateList=new HashMap<>();
+        //将activity （content）传入状态，以便修改状态
         NoRaffleState noRaffleState = new NoRaffleState(this);
         stateList.put("noraffle",noRaffleState);
         stateList.put("canraffle",new CanRaffleState(this));
@@ -82,6 +84,7 @@ public class Activity {
     }
 
     //本人执行抽奖行为
+
     //扣积分
     public  void deduce(){
         state.deduce();
