@@ -8,9 +8,9 @@ package Pattern.Visitor;
  * @author: morSun
  */
 public class Disk extends HardWare{
-
+    /**②重写 双分派之动态分派 --- 同CPU*/
     @Override
     protected void accept(Kit kit) {
-        kit.visitDisk(this);
+        kit.visit(this);// 工具包接收硬件做升级操作,直接将硬件传入
     }
 }
