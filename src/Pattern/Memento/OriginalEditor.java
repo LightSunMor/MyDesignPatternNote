@@ -21,6 +21,7 @@ public class OriginalEditor {
     {
         this.content+=msg;
     }
+
     //执行撤销动作
     public void resume(EditorMemento memento)
     {

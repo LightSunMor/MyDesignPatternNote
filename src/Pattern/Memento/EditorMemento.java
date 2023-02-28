@@ -7,7 +7,7 @@ package Pattern.Memento;
  * @message: 编辑器内容备份
  * @author: morSun
  */
-public class EditorMemento {
+public class EditorMemento implements Memento{
     private String content;
 
     public EditorMemento(String content) {

@@ -10,6 +10,7 @@ import java.util.Stack;
  * @author: morSun
  */
 public class EditorMementoManager{
+    //利用栈先入后出的特性，模拟备份管理的撤销动作
     Stack<EditorMemento> stack;
     EditorMementoManager()
     {

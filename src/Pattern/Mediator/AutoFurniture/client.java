@@ -13,7 +13,7 @@ public class client {
         TV tv = new TV(mediator, "电视机");
         CoffeeMachine coffeeMachine = new CoffeeMachine(mediator, "咖啡机");
 
-        //电视机打开准备
+        //电视机打开准备 （电视机向中介者发出启动指令，并由中介者接收指令，并且）
         tv.sendMsg("start");
 
         coffeeMachine.sendMsg("start");

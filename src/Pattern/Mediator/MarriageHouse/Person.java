@@ -21,7 +21,7 @@ public class Person {
         this.sex = sex;
         this.requestAge = requestAge;
         this.mediator = mediator;
-        //注册此人
+        //注册此人 在自己的构造方法中直接将自己交给中介者管理
         mediator.register(this);
     }
 
