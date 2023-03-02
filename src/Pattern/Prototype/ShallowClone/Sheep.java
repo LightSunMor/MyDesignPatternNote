@@ -20,7 +20,7 @@ public class Sheep implements Cloneable{
     @Override
     protected Object clone(){
         try{
-            //使用默认的clone方法，是原生的   protected native Object clone() throws CloneNotSupportedException;
+            //使用默认的clone方法，是原生的本地方法   protected native Object clone() throws CloneNotSupportedException;
             return super.clone();
         }catch (CloneNotSupportedException e)
         {

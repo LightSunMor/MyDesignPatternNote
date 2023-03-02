@@ -9,8 +9,8 @@ package Pattern.Visitor;
  */
 public class Root {
     //组装硬件
-    private CPU cpu;
-    private Disk disk;
+    private HardWare cpu;
+    private HardWare disk;
     //初始化
     Root()
     {
@@ -29,6 +29,7 @@ public class Root {
     //接收升级包
     public void accept(Kit kit)
     {
+        // 根据实际类型动态分派
         cpu.accept(kit);
         disk.accept(kit);
     }

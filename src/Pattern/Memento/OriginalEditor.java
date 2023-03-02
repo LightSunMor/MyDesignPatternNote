@@ -34,6 +34,6 @@ public class OriginalEditor {
     //保存副本
     public EditorMemento save()
     {
-        return  new EditorMemento(content);
+        return new EditorMemento(content);
     }
 }

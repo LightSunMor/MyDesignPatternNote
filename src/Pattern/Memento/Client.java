@@ -10,9 +10,10 @@ package Pattern.Memento;
 public class Client {
     public static void main(String[] args) {
         //使用编辑器
-        EditorMementoManager manager = new EditorMementoManager();
-        OriginalEditor editor = new OriginalEditor();
+        EditorMementoManager manager = new EditorMementoManager(); // 创建备份管理器
+        OriginalEditor editor = new OriginalEditor(); // 创建原始编辑器
 
+        // 编辑新增文字
         editor.changeAdd("l");
         editor.print();
         manager.add(editor.save());
